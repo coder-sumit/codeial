@@ -1,7 +1,9 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req, res){
-     return res.send("<h1> User Profile </h1>");
+     return res.render('user_profile.ejs', {
+          title: "Profile"
+     });
 };
 
 module.exports.delete = (req, res)=>{
@@ -10,6 +12,10 @@ module.exports.delete = (req, res)=>{
 
 // render sign up page
 module.exports.signUp = (req, res)=>{
+     // if user signed in
+     if(req.isAuthenticated()){
+          return res.redirect('/users/profile');
+     }
      return res.render('user_sign_up.ejs', {
           title: "Codeial|Sign Up"
      });
@@ -17,6 +23,10 @@ module.exports.signUp = (req, res)=>{
 
 // render sign in page
 module.exports.signIn = (req, res)=>{
+     // if user signed in
+     if(req.isAuthenticated()){
+          return res.redirect('/users/profile');
+     }
      return res.render('user_sign_in.ejs', {
           title: "Codeial|Sign In"
      });
@@ -47,5 +57,12 @@ module.exports.create = (req, res)=>{
 
 // sign in and create the session
 module.exports.createSession = (req, res)=>{
-     // Todo latter
+    return res.redirect('/');
+}
+
+module.exports.destroySession = (req, res)=>{
+     req.logout(function(err) {
+          if (err) { return next(err); }
+          res.redirect('/');
+        });
 }
