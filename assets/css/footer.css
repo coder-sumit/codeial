@@ -1,0 +1,14 @@
+footer {
+  background-color: #bdbdbd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer .copy {
+  text-align: center;
+  font-size: 14px;
+  line-height: 2px;
+  padding: 2px 3px;
+}

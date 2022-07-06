@@ -1,13 +1,19 @@
 <header>
-    This is Header
-
+  <nav>
+  <div id="logo">
+    <h1>
+      Codeial
+    </h1>
+  </div>
+    
+  <ul>
     <% if(locals.user){ %>
-         <ul>
-            <li><a href="/users/profile"> <%= user.name %></a></li>
+         
+            <li><a href="/users/profile"> <img src="/images/profile.svg" alt="Profile image"> <span> <%= user.name %> </span></a></li>
             <li>
                 <a href="/users/sign-out">Sign Out</a>
             </li>
-         </ul>
+        
     <% }else{ %>
           <li>
             <a href="/users/sign-in">Sign In</a>
@@ -16,4 +22,6 @@
             <a href="/users/sign-up">Sign Up</a>
           </li>
     <% } %>
+  </ul>
+</nav>
 </header>

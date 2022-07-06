@@ -1,0 +1,13 @@
+footer{
+    background-color: rgb(189, 189, 189);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .copy{
+        text-align: center;
+        font-size: 14px;
+        line-height: 2px;
+        padding: 2px 3px;
+    }
+}
