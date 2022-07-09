@@ -1,10 +1,21 @@
+const Post = require('../models/post');
 module.exports.home = function(req, res){
-        console.log(req.cookies);
-        res.cookie('user_id', 111);
+        // Post.find({}, function(err, posts){
+        //    if(err){console.log("Error finding in Post"); return;}
+        //    return res.render('home',{
+        //         title: 'Home',
+        //         posts: posts
+        // });
+        // });
 
-        return res.render('home',{
-                title: 'Home'
+        Post.find({}).populate('user').exec(function(err, posts){
+                if(err){console.log("Error finding in Post"); return;}
+                   return res.render('home',{
+                        title: 'Home',
+                        posts: posts
+                });
         });
+       
 };
 
 module.exports.about = (req, res)=>{

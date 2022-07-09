@@ -4,4 +4,22 @@
         Codeial/<%= title %>
  </h1>
 
- <script src="/js/app.js"></script>
+<section id="feed-posts">
+   <h4>Posts</h4>
+   <% if(locals.user){ %>
+   <form action="/posts/create" method="post">
+       <textarea name="content" cols="30" rows="3" placeholder="Write Here..." required></textarea>
+       <input type="submit" value="Post">
+   </form>
+   <% } %>
+
+   <div class="post-container">
+    <% for(post of posts){ %>
+    <div class="post">
+        <p><%= post.content %></p>
+        <small><%= post.user.name %></small>
+        
+    </div>
+    <% } %>
+   </div>
+</section>

@@ -1,0 +1,14 @@
+.post-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 3rem auto;
+  justify-content: space-between;
+}
+
+.post-container .post {
+  margin-top: 1rem;
+  width: 300px;
+  padding: 4px 7px;
+  border: 1px solid #ee6767;
+}
