@@ -22,3 +22,27 @@ module.exports.create = function(req, res){
          }
       });
 }
+
+module.exports.destroy = function(req, res){
+    let id = req.params.id;
+    comment.findById(id)
+    .populate('post')
+    .exec(function(err, comment){
+        if(err){return res.send("Error finding in  comment");}
+        if(comment){
+            
+            if(comment.user == req.user.id || comment.post.user == req.user.id){
+                let postId = comment.post.id;
+                console.log(postId, id, "---");
+                comment.remove();
+                post.findByIdAndUpdate(postId, {$pull: {comments: id}}, function(err, podt){
+                    return res.redirect('back');
+                });
+            }else{
+                return res.send("Not Authorized");
+            }
+        }else{
+            return res.send("Comment not Found");
+        }
+    });
+}
