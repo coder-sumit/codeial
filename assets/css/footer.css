@@ -12,3 +12,7 @@ footer .copy {
   line-height: 2px;
   padding: 2px 3px;
 }
+
+#user-friends {
+  margin-bottom: 4rem;
+}

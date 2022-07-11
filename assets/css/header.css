@@ -14,6 +14,11 @@ nav #logo {
   letter-spacing: 2px;
 }
 
+nav #logo a {
+  text-decoration: none;
+  color: #F47C7C;
+}
+
 nav ul {
   display: flex;
   list-style: none;

@@ -1,13 +1,6 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 module.exports.home = function(req, res){
-        // Post.find({}, function(err, posts){
-        //    if(err){console.log("Error finding in Post"); return;}
-        //    return res.render('home',{
-        //         title: 'Home',
-        //         posts: posts
-        // });
-        // });
-
         Post.find({}).populate('user')
         .populate({
                 path: 'comments',
@@ -16,10 +9,13 @@ module.exports.home = function(req, res){
                 }
         })
         .exec(function(err, posts){
-                if(err){console.log("Error finding in Post", err); return;}
-                   return res.render('home',{
-                        title: 'Home',
-                        posts: posts,
+
+                User.find({}, function(err, users){
+                        return res.render('home',{ 
+                                title: 'Home',
+                                posts: posts,
+                                all_users: users
+                        });                   
                 });
         });
        

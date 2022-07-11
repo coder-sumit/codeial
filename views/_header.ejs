@@ -1,15 +1,17 @@
 <header>
   <nav>
   <div id="logo">
+    <a href="/">
     <h1>
       Codeial
     </h1>
+  </a>
   </div>
     
   <ul>
     <% if(locals.user){ %>
          
-            <li><a href="/users/profile"> <img src="/images/profile.svg" alt="Profile image"> <span> <%= user.name %> </span></a></li>
+            <li><a href="/users/profile/<%= user.id %>"> <img src="/images/profile.svg" alt="Profile image"> <span> <%= user.name %> </span></a></li>
             <li>
                 <a href="/users/sign-out">Sign Out</a>
             </li>
