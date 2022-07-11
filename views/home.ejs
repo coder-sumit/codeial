@@ -1,15 +1,13 @@
  <link rel="stylesheet" href="/css/style.css">
  
- <h1>
-        Codeial/<%= title %>
- </h1>
+<div id="home-container">
 
 <section id="feed-posts">
-   <h4>Posts</h4>
+   <h3>Posts</h3>
    <% if(locals.user){ %>
-   <form action="/posts/create" method="post">
+   <form class="post-form" action="/posts/create" method="post">
        <textarea  name="content" cols="30" rows="3" placeholder="Write Here..." required></textarea>
-       <input type="submit" value="Post">
+       <input class="btn" type="submit" value="Post">
    </form>
    <% } %>
 
@@ -32,5 +30,7 @@
     </ul>
     <% } %>
 </section>
+
+</div>
 
 <script src="/js/app.js"></script>

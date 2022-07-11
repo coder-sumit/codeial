@@ -1,14 +1,133 @@
-.post-container {
-  display: flex;
-  flex-wrap: wrap;
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap");
+#home-container {
+  box-sizing: border-box;
   width: 80%;
-  margin: 3rem auto;
+  min-width: 360px;
+  display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 
-.post-container .post {
-  margin-top: 1rem;
-  width: 300px;
-  padding: 4px 7px;
-  border: 1px solid #ee6767;
+#home-container #feed-posts {
+  background-color: #e7fbea;
+  width: 55%;
+  border-radius: 10px;
+}
+
+#home-container #feed-posts h3 {
+  text-align: center;
+}
+
+#home-container #feed-posts .post-form {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#home-container #feed-posts .post-form textarea {
+  width: 80%;
+  resize: none;
+  outline: none;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 15px 15px;
+}
+
+#home-container #feed-posts .post-form .btn {
+  padding: 22px 11px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  background-color: #F47C7C;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#home-container #feed-posts .post-container {
+  width: 85%;
+  margin: 3rem auto;
+}
+
+#home-container #feed-posts .post-container .post {
+  background-color: #f7fbfb;
+  padding: 10px 20px;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
+
+#home-container #feed-posts .post-container .post h4 {
+  color: #515151;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.3rem;
+  transform: translateY(-30px);
+}
+
+#home-container #feed-posts .post-container .post .comment-form {
+  width: 100%;
+}
+
+#home-container #feed-posts .post-container .post .comment-form textarea {
+  width: 80%;
+  padding: 5px 20px;
+  padding-left: 10px;
+  font-size: 14px;
+  resize: none;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #eee;
+  background-color: transparent;
+}
+
+#home-container #feed-posts .post-container .post .comment-form button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#home-container #feed-posts .post-container .post .comment-form button img {
+  width: 100%;
+  height: 100%;
+}
+
+#home-container #feed-posts .post-container .post .post-user {
+  text-align: right;
+  display: block;
+  font-weight: bold;
+  color: #F47C7C;
+  margin-top: 5px;
+}
+
+#home-container #feed-posts .post-container .post small.del-btn a img {
+  width: 40px;
+  transform: translateY(-20px);
+}
+
+#home-container #user-friends {
+  border-left: 1px solid #f1eeee;
+  padding-left: 20px;
+}
+
+#home-container #user-friends ul {
+  list-style-type: "→ ";
+}
+
+#home-container #user-friends ul li {
+  margin-bottom: 10px;
+}
+
+#home-container #user-friends ul li a {
+  color: #515151;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#home-container #user-friends ul li a:hover {
+  color: #F47C7C;
 }

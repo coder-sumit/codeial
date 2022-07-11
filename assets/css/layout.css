@@ -3,4 +3,5 @@ body {
   margin: 0;
   font-family: 'Bitter', serif;
   background-color: #F6FBF4;
+  box-sizing: border-box;
 }

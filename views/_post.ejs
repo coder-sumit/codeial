@@ -1,21 +1,25 @@
 
 <div class="post">
-
-    <p><%= post.content %></p>
-    <small><%= post.user.name %></small>
-    <!-- delete post btn -->
+    <small class="post-user"><%= post.user.name %></small>
     <% if(locals.user && locals.user.id == post.user.id) {%>
-        <br><small>
-      <a href="posts/destroy/<%= post.id %>">Delete</a>
-    </small> <br><br>
-    <% } %>
+        <small class="del-btn">
+         <a href="posts/destroy/<%= post.id %>">
+            <img src="/images/del.png" alt="delete post">
+         </a>
+       </small>
+       <% } %>
+    <h4><%= post.content %></h4>
+    <!-- delete post btn -->
+
 
 
     <% if(locals.user){ %>
     <form class="comment-form" action="/comments/create" method="post">
-        <textarea name="comment" id="" cols="30" rows="1" required></textarea>
+        <textarea placeholder="Give reations..." name="comment" id="" cols="30" rows="1" required></textarea>
         <input type="hidden" name="post" value="<%= post._id %>">
-        <input type="submit" value="Comment">
+        <button type="submit">
+            <img src="/images/comment.png" alt="comment">
+        </button>
     </form>
     <% } %>
 
