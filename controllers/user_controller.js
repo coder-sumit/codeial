@@ -1,5 +1,7 @@
 const User = require('../models/user');
 
+// these controllers contains only one callback so need of async await here
+
 module.exports.profile = function(req, res){
      let id = req.params.id;
      User.findById(id, (err, user)=>{
