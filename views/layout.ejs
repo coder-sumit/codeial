@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <link rel="stylesheet" href="/css/layout.css">
     <%- style %>
     <link rel="stylesheet" href="/css/header.css">
@@ -12,6 +14,7 @@
 </head>
 <body>
     <%- include('./_header') %>
+
     <main id="main">
     <%- body %>
     </main>
@@ -19,5 +22,27 @@
     <%- include('./_footer') %>
     
     <%- script %>
+
+    <script>
+    // ejs works even after commenting it ejs code is commented to hide error showing by vs code
+    //<% if(flash.success && flash.success.length >0){ %>
+        new Noty({
+           theme: 'sunset',
+           text: '<%= flash.success %>',
+           type: 'success',
+           layout: 'topRight',
+           timeout: 1500
+        }).show();
+    //<%}%>
+    //<% if(flash.error && flash.error.length >0){ %>
+        new Noty({
+           theme: 'sunset',
+           text: '<%= flash.error %>',
+           type: 'error',
+           layout: 'topRight',
+           timeout: 1500
+        }).show();
+    //<%}%>
+    </script>
 </body>
 </html>

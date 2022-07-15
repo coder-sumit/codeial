@@ -13,6 +13,10 @@ module.exports.create = async function(req, res){
             // save comment to post
             myPost.comments.push(myComment._id);
             myPost.save();
+            req.flash('success', 'commented!');
+            return res.redirect('back');
+        }else{
+            req.flash('error', 'Error while commenting');
             return res.redirect('back');
         }
     }catch(err){
@@ -30,11 +34,14 @@ module.exports.destroy = async function(req, res){
                 let postId = myComment.post.id;
                 myComment.remove();
                 await post.findByIdAndUpdate(postId, {$pull: {comments: id}});
-                return res.redirect('back');
+            req.flash('error', 'comment got deleted!');
+            return res.redirect('back');
             }else{
+            req.flash('error', 'you are not authorized');
                 return res.send("Not Authorized");
             }
         }else{
+            req.flash('error', 'comment not found!');
             return res.send("Comment not Found");
         }
    }catch(err){
