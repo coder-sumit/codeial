@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const fs = require('fs');
+const path = require('path');
 
 // these controllers contains only one callback so need of async await here
 
@@ -13,18 +15,45 @@ module.exports.profile = function(req, res){
      
 };
 
-module.exports.update = function(req, res){
-     if(req.params.id == req.user.id){
-          console.log(req.body);
-          User.findByIdAndUpdate(req.params.id, {
-               name: req.body.name,
-               email: req.body.email
-          }, function(err, user){
-               return res.redirect('back');
-          });
-     }else{
-          return res.status(401).send('unauthorized');
+module.exports.update = async function(req, res){
+     try{
+          if(req.params.id == req.user.id){
+               let user = await User.findByIdAndUpdate(req.params.id);
+               User.uploadedAvatar(req, res, function(err){
+                    if(err){ console.log('***', err); return;}
+                    user.name = req.body.name;
+                    user.email = req.body.email;
+               // remove file from uploads
+               if(req.file){
+               if(user.avatar){
+               let files = fs.readdirSync(path.join(__dirname, '..', User.avatarPath));
+               let isAvailable = false;
+               for(file of files){
+                    if((User.avatarPath + '/' + file) == user.avatar){
+                         isAvailable = true;
+                    }
+               }
+               if(isAvailable){
+                   fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+               }
+               }
+
+
+                    
+               user.avatar = User.avatarPath + '/' + req.file.filename;
+                    
+          }
+                    user.save();
+                    return res.redirect('back');
+               });
+               }else{
+                return res.status(401).send('unauthorized');
+               }
+     }catch(err){
+          res.flash('error', err);
+          return res.redirect('back');
      }
+     
 }
 
 module.exports.delete = (req, res)=>{

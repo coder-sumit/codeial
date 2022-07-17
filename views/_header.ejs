@@ -11,7 +11,16 @@
   <ul>
     <% if(locals.user){ %>
          
-            <li><a href="/users/profile/<%= user.id %>"> <img src="/images/profile.svg" alt="Profile image"> <span> <%= user.name %> </span></a></li>
+            <li>
+              <a href="/users/profile/<%= user.id %>">
+                <% if(user.avatar){ %> 
+                  <img src="<%= user.avatar %>" alt="<%= user.name %>"> 
+                <% } else{%>
+               <img src="/images/profile.svg" alt="<%= user.name %>"> 
+               <% } %>
+               <span> <%= user.name %> </span>
+              </a>
+            </li>
             <li>
                 <a href="/users/sign-out">Sign Out</a>
             </li>

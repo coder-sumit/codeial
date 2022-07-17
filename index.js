@@ -21,6 +21,7 @@ app.use(sassMiddleware({
 }));
 // static files
 app.use(express.static('./assets'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 
 // extract styles and scripts from sub pages to layouts
